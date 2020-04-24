@@ -1,14 +1,9 @@
-// import * as path from "path";
-// import * as fs from "fs";
-// import * as pdfparse from 'pdf-parse';
 // import { config } from '../config/config';
 // import * as DbManager from './firebaseManager';
 
 
 // export function parsing (pdffile, file) {
-//     // pdfparse(pdffile).then(function(data){
-//     //     let filetxt = data.text;
-//         let SplittedTxt = filetxt.split("\n");
+//         // let SplittedTxt = filetxt.split("\n");
 //         Object.keys(SplittedTxt).forEach(function(key) {
 //             var hi = SplittedTxt[key].split(",").toString();
 //             let arr = [];

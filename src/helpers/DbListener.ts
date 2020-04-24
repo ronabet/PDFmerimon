@@ -6,7 +6,7 @@ import * as DBManager from '../utils/firebaseManager';
 
 const app = DBManager.app;
 const parsedPDFMerimonRef = app.firestore().collection('parsedPDFMerimon');
-// const parsedPDFMerimonRef = app.firestore();
+
 
 export function listener () {
   
@@ -14,18 +14,21 @@ export function listener () {
   .pipe(
       skip(1),
       map(addedEvents => addedEvents[0].doc.data()),
-      tap(data => console.log(data))
+      tap(data => {
+          console.log(data);
+          Object.keys(data).forEach(function(key) {
+            var hi = data[key].split(",").toString();
+            let arr = [];
+            if(data[key].match("(.*?)\s*=\s*([^\s]+)")){
+                arr.push(hi.split("="));
+                var keyData = arr[0][0];
+                var valueData = arr[0][1].split(",")[0];
+                var ObjectToDB = {[keyData]: valueData};
+                console.log("Object to insert: " + ObjectToDB);
+            }
+          })
+        })
       )
  .subscribe();
 
-
-
-
-
-  // fromCollectionRef(parsedPDFMerimonRef)
-  //   .pipe(
-  //     tap(cities => console.log(cities)),
-  //     tap(_ => console.log("Doc inserted!")),
-  //     )
-  //   .subscribe();
 }
