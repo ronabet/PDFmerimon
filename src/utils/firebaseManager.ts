@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 import * as admin from 'firebase-admin'
 import { DBconfig } from '../config/DBConfig';
-const permissions = require('../../fireconfig.json');
+const permissions = require('../config/fireconfig.json');
 
 admin.initializeApp({
     credential: admin.credential.cert(permissions),
