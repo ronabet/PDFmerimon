@@ -1,2 +1,2 @@
-cd built
+cd ../built
 node server.js
